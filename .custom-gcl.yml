@@ -1,0 +1,14 @@
+# This configures how golangci-lint builds a custom build.
+# It does NOT configure _how_ that build runs - use <custom_build> -c <path-to-configyml> for that
+
+# getting below, need to figure this out:
+# ./custom-gcl run -c .golangci-incremental-custom-build.yml
+# Error: unknown linters: 'nilaway', run 'golangci-lint help linters' to see the list of supported linters
+# Failed executing command with error: unknown linters: 'nilaway', run 'golangci-lint help linters' to see the list of supported linters
+
+# This has to be >= v1.57.0 for module plugin system support.
+version: v1.57.0
+plugins:
+  - module: "go.uber.org/nilaway"
+    import: "go.uber.org/nilaway/cmd/gclplugin"
+    version: latest # Or a fixed version for reproducible builds.
